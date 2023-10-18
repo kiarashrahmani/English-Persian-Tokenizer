@@ -38,7 +38,22 @@ def simulate_dfa(input_string):
     return current_state
 
 # Test the DFA
-inputs = ["hello", "سلام","amirhossein"]
+input_string = "a 1 ب aب1@ aب@1 a1ب@ a1@ب a@ب1 a@1ب بa1@ بa@1 ب1a@ ب1@a ب@a1 ب@1a 1aب@ 1a@ب 1بa@ 1ب@a 1@aب 1@بa @aب1 @a1ب @بa1 @ب1a @1aب @1بa"
+inputs = []
+current_word = ""
+for char in input_string:
+    if char == ' ':
+        if current_word:
+            inputs.append(current_word)
+        current_word = ""
+    else:
+        current_word += char
+
+if current_word:
+    inputs.append(current_word)
+
+
+print(inputs)
 for input_str in inputs:
     result = simulate_dfa(input_str)
     if result == 'Start':
