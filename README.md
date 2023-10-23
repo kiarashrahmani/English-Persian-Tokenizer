@@ -22,3 +22,6 @@ The English-Persian Tokenizer is a simple Python program that classifies input s
 
    ```shell
    python tokenizer.py "Your input text here."
+   
+Thank you for using the English-Persian Tokenizer!
+
