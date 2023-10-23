@@ -12,11 +12,23 @@ alphabet = {
     'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی'
 }
 
+englishalphabet = {
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    }
+
+persianalphabet = {
+    'آ', 'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر',
+    'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ک',
+    'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی'
+    }
 # Define the transition function as a dictionary
 transitions = {
-    'Start': {char: 'Englishword' if char.isascii() and char.isalpha() else 'Persianword' if char in 'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی' else 'Start' for char in alphabet},
-    'Englishword': {char: 'Englishword' if char.isascii() and char.isalpha() else 'Start' for char in alphabet},
-    'Persianword': {char: 'Persianword' if char in 'آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی' else 'Start' for char in alphabet},
+    'Start': {char: 'Englishword' if char in englishalphabet else 'Persianword' if char in persianalphabet else 'Start' for char in alphabet},
+    'Englishword': {char: 'Englishword' if char in englishalphabet else 'Start' for char in alphabet},
+    'Persianword': {char: 'Persianword' if char in persianalphabet else 'Start' for char in alphabet},
 }
 
 # Define the start state
@@ -38,7 +50,7 @@ def simulate_dfa(input_string):
     return current_state
 
 # Test the DFA
-input_string = "a 1 ب aب1@ aب@1 a1ب@ a1@ب a@ب1 a@1ب بa1@ بa@1 ب1a@ ب1@a ب@a1 ب@1a 1aب@ 1a@ب 1بa@ 1ب@a 1@aب 1@بa @aب1 @a1ب @بa1 @ب1a @1aب @1بa"
+input_string = "university of zanjan اسt This is a test string to check the DFA's functionality. یک متن نمونه برای تست عملکرد DFA است. شلام دنیا! 12345 فارسی English محمد John سلام World متن تست دیگر 123ABC man time shop kitchen mirror calendar say doctor son آpple notebook student handle window machine television keyboard rhone homework pencil quit puppy damn friend dog run sun to double tip pick tick ten rather take school lesson shirt car cat shade race game hold ear phone parent play bike girl guy flower shower pet par brother war first day tun fix bell hurt sad fun run table chime home day house food door love sea sky sky star name"
 inputs = []
 current_word = ""
 for char in input_string:
@@ -59,9 +71,9 @@ for input_str in inputs:
     if result == 'Start':
         print(f"'{input_str}' is rejected by the DFA")
     elif result == 'Englishword':
-        print(f"'{input_str}' is accepted as an English word by the DFA")
+        print(f"'{input_str}' is an English word")
     elif result == 'Persianword':
-        print(f"'{input_str}' is accepted as a Persian word by the DFA")
+        print(f"'{input_str}' is a Persian word ")
         
     elif result == False:
             print(f"'{input_str}' is rejected by the DFA")
