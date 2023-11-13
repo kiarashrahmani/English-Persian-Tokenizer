@@ -50,7 +50,7 @@ def simulate_dfa(input_string):
     return current_state
 
 # Test the DFA
-input_string = "university of zanjan اسt This is a test string to check the DFA's functionality. یک متن نمونه برای تست عملکرد DFA است. شلام دنیا! 12345 فارسی English محمد John سلام World متن تست دیگر 123ABC man time shop kitchen mirror calendar say doctor son آpple notebook student handle window machine television keyboard rhone homework pencil quit puppy damn friend dog run sun to double tip pick tick ten rather take school lesson shirt car cat shade race game hold ear phone parent play bike girl guy flower shower pet par brother war first day tun fix bell hurt sad fun run table chime home day house food door love sea sky sky star name"
+input_string = "مهدی university of zanjan اسt This is a test string to check the DFA's functionality. یک متن نمونه برای تست عملکرد DFA است. شلام دنیا! 12345 فارسی English محمد John سلام World متن تست دیگر 123ABC man time shop kitchen mirror calendar say doctor son آpple notebook student handle window machine television keyboard rhone homework pencil quit puppy damn friend dog run sun to double tip pick tick ten rather take school lesson shirt car cat shade race game hold ear phone parent play bike girl guy flower shower pet par brother war first day tun fix bell hurt sad fun run table chime home day house food door love sea sky sky star name"
 inputs = []
 current_word = ""
 for char in input_string:
